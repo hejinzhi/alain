@@ -20,15 +20,31 @@ import { UserLockComponent } from './passport/lock/lock.component';
 import { Exception403Component } from './exception/403.component';
 import { Exception404Component } from './exception/404.component';
 import { Exception500Component } from './exception/500.component';
+import { RoutesGuard } from './routes.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: LayoutDefaultComponent,
+    // component: LayoutPassportComponent,
     children: [
-      { path: '', redirectTo: 'dashboard/v1', pathMatch: 'full' },
-      { path: 'dashboard', redirectTo: 'dashboard/v1', pathMatch: 'full' },
-      { path: 'dashboard/v1', component: DashboardV1Component },
+      {
+        path: '',
+        redirectTo: 'dashboard/v1',
+        pathMatch: 'full',
+        canActivate: [RoutesGuard],
+      },
+      {
+        path: 'dashboard',
+        redirectTo: 'dashboard/v1',
+        pathMatch: 'full',
+        canActivate: [RoutesGuard],
+      },
+      {
+        path: 'dashboard/v1',
+        component: DashboardV1Component,
+        canActivate: [RoutesGuard],
+      },
       { path: 'dashboard/analysis', component: DashboardAnalysisComponent },
       { path: 'dashboard/monitor', component: DashboardMonitorComponent },
       { path: 'dashboard/workplace', component: DashboardWorkplaceComponent },

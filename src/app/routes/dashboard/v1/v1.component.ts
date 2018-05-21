@@ -59,4 +59,11 @@ export class DashboardV1Component implements OnInit {
       this.offlineChartData = res.offlineChartData;
     });
   }
+
+  test() {
+    this.http.get('http://localhost:3388/api/book/12').subscribe((res: any) => {
+      console.log(res);
+    });
+    console.log('test');
+  }
 }

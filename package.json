@@ -25,7 +25,8 @@
     "tslint-check": "tslint-config-prettier-check ./tslint.json",
     "e2e": "ng e2e",
     "test": "ng test --watch",
-    "test-coverage": "ng test --code-coverage --watch=false"
+    "test-coverage": "ng test --code-coverage --watch=false",
+    "aa": "tslint -p src/tsconfig.app.json -c tslint.json src/app/rxjs.ts"
   },
   "dependencies": {
     "@angular/animations": "^6.0.0",
@@ -37,10 +38,9 @@
     "@angular/platform-browser": "^6.0.0",
     "@angular/platform-browser-dynamic": "^6.0.0",
     "@angular/router": "^6.0.0",
-    "core-js": "^2.5.4",
-    "rxjs": "^6.0.0",
-    "rxjs-compat": "^6.1.0",
-    "zone.js": "^0.8.26",
+    "@antv/data-set": "^0.8.8",
+    "@antv/g2": "^3.0.11",
+    "@antv/g2-plugin-slider": "^2.0.2",
     "@delon/abc": "^1.0.1-beta.2",
     "@delon/acl": "^1.0.1-beta.2",
     "@delon/auth": "^1.0.1-beta.2",
@@ -49,19 +49,21 @@
     "@delon/mock": "^1.0.1-beta.2",
     "@delon/theme": "^1.0.1-beta.2",
     "@delon/util": "^1.0.1-beta.2",
-    "@antv/data-set": "^0.8.8",
-    "@antv/g2": "^3.0.11",
-    "@antv/g2-plugin-slider": "^2.0.2",
     "@ngx-translate/core": "^10.0.1",
     "@ngx-translate/http-loader": "^3.0.1",
     "ajv": "^6.4.0",
+    "core-js": "^2.5.4",
+    "crypto-js": "^3.1.9-1",
     "file-saver": "^1.3.8",
     "ng-zorro-antd": "^0.7.0",
     "ngx-countdown": "^3.0.0",
     "ngx-tinymce": "^2.0.0",
     "ngx-ueditor": "^2.0.0",
+    "rxjs": "^6.0.0",
+    "rxjs-compat": "^6.1.0",
     "screenfull": "^3.3.1",
-    "simple-line-icons": "^2.4.1"
+    "simple-line-icons": "^2.4.1",
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular/compiler-cli": "^6.0.0",
@@ -106,15 +108,7 @@
       "editorconfig-tools fix",
       "git add"
     ],
-    "*.ts": [
-      "npm run lint:ts",
-      "prettier --write",
-      "git add"
-    ],
-    "src/**/*.less": [
-      "npm run lint:style",
-      "prettier --write",
-      "git add"
-    ]
+    "*.ts": ["prettier --write", "git add"],
+    "src/**/*.less": ["npm run lint:style", "prettier --write", "git add"]
   }
 }

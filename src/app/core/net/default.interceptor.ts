@@ -93,9 +93,11 @@ export class DefaultInterceptor implements HttpInterceptor {
   > {
     // 统一加上服务端前缀
     let url = req.url;
+    // let url = 'https://miwebapi.mic.com.cn' + req.url;
     if (!url.startsWith('https://') && !url.startsWith('http://')) {
       url = environment.SERVER_URL + url;
     }
+    console.log(url);
 
     const newReq = req.clone({
       url: url,
